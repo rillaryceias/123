@@ -1,0 +1,264 @@
+:root {
+    --cor-fundo: #020617;
+    --cor-principal: #0b1026;
+    --cor-secundaria: #151b36;
+    --cor-destaque: #2bdeFD;
+    --cor-destaque-2: #8b5cf6;
+    --cor-texto: #d7f9ff;
+    --cor-texto-secundaria: #9ca3af;
+    --sombra: rgba(43, 222, 253, 0.25);
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    padding: 20px;
+
+    font-family: Arial, Helvetica, sans-serif;
+
+    color: var(--cor-texto);
+
+    background:
+        radial-gradient(circle at top left, rgba(43, 222, 253, 0.15), transparent 35%),
+        radial-gradient(circle at bottom right, rgba(139, 92, 246, 0.15), transparent 35%),
+        var(--cor-fundo);
+}
+
+/* Caixa principal */
+
+.caixa-principal {
+    width: 100%;
+    max-width: 700px;
+
+    padding: 40px;
+
+    text-align: center;
+
+    background: rgba(11, 16, 38, 0.92);
+
+    border: 1px solid rgba(43, 222, 253, 0.2);
+    border-radius: 25px;
+
+    box-shadow:
+        0 0 30px rgba(43, 222, 253, 0.08),
+        0 20px 60px rgba(0, 0, 0, 0.5);
+
+    backdrop-filter: blur(10px);
+}
+
+/* Título */
+
+h1 {
+    margin-bottom: 12px;
+
+    font-size: clamp(28px, 5vw, 42px);
+
+    color: var(--cor-destaque);
+
+    text-shadow:
+        0 0 10px rgba(43, 222, 253, 0.6),
+        0 0 30px rgba(43, 222, 253, 0.25);
+}
+
+/* Subtítulo */
+
+.caixa-principal::before {
+    content: "O FUTURO ESTÁ EM SUAS MÃOS";
+
+    display: block;
+
+    margin-bottom: 30px;
+
+    color: var(--cor-texto-secundaria);
+
+    font-size: 12px;
+    letter-spacing: 3px;
+}
+
+/* Pergunta */
+
+.caixa-perguntas {
+    min-height: 120px;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    margin-bottom: 25px;
+
+    font-size: 20px;
+    line-height: 1.6;
+
+    animation: aparecer 0.5s ease;
+}
+
+/* Alternativas */
+
+.caixa-alternativas {
+    display: flex;
+    flex-direction: column;
+
+    gap: 15px;
+}
+
+/* Botões */
+
+button {
+    width: 100%;
+
+    padding: 17px 20px;
+
+    border: 1px solid rgba(43, 222, 253, 0.2);
+    border-radius: 14px;
+
+    background: var(--cor-secundaria);
+    color: var(--cor-texto);
+
+    font-size: 16px;
+    line-height: 1.4;
+
+    cursor: pointer;
+
+    transition:
+        transform 0.2s ease,
+        background-color 0.2s ease,
+        box-shadow 0.2s ease,
+        border-color 0.2s ease;
+}
+
+button:hover {
+    transform: translateY(-3px);
+
+    background: var(--cor-destaque);
+    color: var(--cor-principal);
+
+    border-color: var(--cor-destaque);
+
+    box-shadow:
+        0 0 15px var(--sombra),
+        0 8px 25px rgba(43, 222, 253, 0.15);
+}
+
+button:active {
+    transform: scale(0.98);
+}
+
+/* Resultado */
+
+.caixa-resultado {
+    display: none;
+
+    margin-top: 30px;
+
+    padding: 25px;
+
+    border-radius: 18px;
+
+    background: rgba(43, 222, 253, 0.06);
+
+    border: 1px solid rgba(43, 222, 253, 0.2);
+
+    animation: aparecer 0.7s ease;
+}
+
+.caixa-resultado.mostrar {
+    display: block;
+}
+
+.caixa-resultado::before {
+    content: "◈ FUTURO DESBLOQUEADO ◈";
+
+    display: block;
+
+    margin-bottom: 20px;
+
+    color: var(--cor-destaque);
+
+    font-size: 13px;
+    font-weight: bold;
+
+    letter-spacing: 2px;
+}
+
+.texto-resultado {
+    margin-bottom: 25px;
+
+    color: var(--cor-texto);
+
+    font-size: 17px;
+    line-height: 1.7;
+}
+
+/* Botão jogar novamente */
+
+.novamente-btn {
+    width: auto;
+    min-width: 200px;
+
+    background: linear-gradient(
+        90deg,
+        var(--cor-destaque),
+        var(--cor-destaque-2)
+    );
+
+    color: white;
+
+    border: none;
+}
+
+.novamente-btn:hover {
+    color: white;
+
+    background: linear-gradient(
+        90deg,
+        var(--cor-destaque-2),
+        var(--cor-destaque)
+    );
+}
+
+/* Animação */
+
+@keyframes aparecer {
+    from {
+        opacity: 0;
+        transform: translateY(15px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Celular */
+
+@media (max-width: 600px) {
+
+    body {
+        padding: 12px;
+    }
+
+    .caixa-principal {
+        padding: 25px 18px;
+        border-radius: 20px;
+    }
+
+    .caixa-perguntas {
+        font-size: 17px;
+        min-height: 150px;
+    }
+
+    button {
+        font-size: 15px;
+        padding: 15px;
+    }
+}
